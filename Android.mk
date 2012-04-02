@@ -70,7 +70,7 @@ LOCAL_CFLAGS += \
 LOCAL_STATIC_LIBRARIES := libminui_bm libpixelflinger_static libpng libz
 LOCAL_STATIC_LIBRARIES += libstdc++ libc libcutils 
 # for busybox functions
-LOCAL_STATIC_LIBRARIES += libbusybox
+LOCAL_STATIC_LIBRARIES += libbusybox libclearsilverregex libm \
 
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 
@@ -103,7 +103,7 @@ LOCAL_CFLAGS := \
 LOCAL_STATIC_LIBRARIES := libminui_bm libpixelflinger_static libpng libz
 LOCAL_STATIC_LIBRARIES += libstdc++ libc libcutils
 # for busybox functions
-LOCAL_STATIC_LIBRARIES += libbusybox
+LOCAL_STATIC_LIBRARIES += libbusybox libclearsilverregex libm \
 
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 
