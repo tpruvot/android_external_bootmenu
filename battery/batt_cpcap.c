@@ -2,7 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <linux/spi/cpcap.h>
+
+/* spi/cpcap.h is missing in gingerbread bionic */
+//#include <linux/spi/cpcap.h>
+#include "cpcap.h"
 
 #include "common.h"
 #include "batt_cpcap.h"
