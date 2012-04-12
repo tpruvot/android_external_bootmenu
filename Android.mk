@@ -25,6 +25,9 @@ ifeq ($(BOARD_WITH_CPCAP),true)
     EXTRA_CFLAGS += -DBOARD_WITH_CPCAP
 endif
 
+ifeq ($(BOOTMENU_USE_DUALCORE_2ND_DIRTY_HACK),true)
+    EXTRA_CFLAGS += -DUSE_DUALCORE_DIRTY_HACK
+endif
 ifneq ($(BOARD_DATA_DEVICE),)
     EXTRA_CFLAGS += -DDATA_DEVICE="\"$(BOARD_DATA_DEVICE)\""
 endif
@@ -74,6 +77,8 @@ LOCAL_CFLAGS += \
 
 LOCAL_STATIC_LIBRARIES := libminui_bm libpixelflinger_static libpng libz
 LOCAL_STATIC_LIBRARIES += libstdc++ libc libcutils 
+# for busybox functions
+LOCAL_STATIC_LIBRARIES += libbusybox libclearsilverregex libm \
 
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 
@@ -105,6 +110,8 @@ LOCAL_CFLAGS := \
 
 LOCAL_STATIC_LIBRARIES := libminui_bm libpixelflinger_static libpng libz
 LOCAL_STATIC_LIBRARIES += libstdc++ libc libcutils
+# for busybox functions
+LOCAL_STATIC_LIBRARIES += libbusybox libclearsilverregex libm \
 
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 

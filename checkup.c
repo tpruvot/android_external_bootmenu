@@ -47,7 +47,7 @@ int checkup_report(void) {
 
     checkup_error=0;
 
-    memset(&st,0,sizeof(st));
+   /* memset(&st,0,sizeof(st));
     if (stat("/sbin/busybox", &st) < 0) {
         error_detected("busybox was not created in rootfs !");
     }
@@ -61,7 +61,7 @@ int checkup_report(void) {
     if (stat("/system/bin/cp", &st) < 0 && stat("/system/xbin/cp", &st) < 0) {
         error_detected("cp not found !");
     }
-
+*/
     memset(&st,0,sizeof(st));
     if (stat("/sbin/adbd", &st) < 0) {
         error_detected("adbd not found !");

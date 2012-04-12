@@ -404,6 +404,14 @@ int main(int argc, char **argv) {
   char* hijacked_executable = argv[0];
   int result;
 
+  if (NULL != strstr(hijacked_executable, "hijack")) {
+    //when ln -s bootmenu hijack, we can use busybox cmd
+    if (argc >= 2) {
+      return busybox_driver(argc - 1, argv + 1);
+    }
+    fprintf(stdout, "use hijack [cmds of busybox].\n");
+    return 0;
+  }		  
   if (NULL != strstr(hijacked_executable, "bootmenu")) {
     fprintf(stdout, "Run BootMenu..\n");
     result = run_bootmenu();
