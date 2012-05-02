@@ -118,7 +118,8 @@ int reboot_wrapper(const char* reason) {
     return ret;
 }
 
-//toolbox applet entry (ics)
+//toolbox applet entry
+#if 0
 int reboot_main(int argc, char *argv[])
 {
     int ret = 0;
@@ -166,3 +167,4 @@ int reboot_main(int argc, char *argv[])
     fprintf(stderr, "reboot returned\n");
     return 0;
 }
+#endif
