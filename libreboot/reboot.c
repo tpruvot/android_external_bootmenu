@@ -13,10 +13,13 @@
 #endif
 
 #define DBG_LEVEL 0
-//#define OVERRIDE_STOCK_BOOTLOADER
 
 #ifndef UNLOCKED_DEVICE
 #define OVERRIDE_STOCK_RECOVERY
+#endif
+
+#ifndef SINGLE_APPLET
+#define SINGLE_APPLET 0
 #endif
 
 #if (DBG_LEVEL)
@@ -24,6 +27,10 @@
 #else
 #define pr_debug(...)
 #endif
+
+// beware, toolbox doesn't support -f and -p
+#define SH_RM    "busybox rm -f"
+#define SH_MKDIR "busybox mkdir -p"
 
 int reboot_wrapper(const char* reason) {
 
@@ -36,15 +43,15 @@ int reboot_wrapper(const char* reason) {
 
         reason = REBOOT_REASON_DEFAULT;
 
-        system("rm -f '" BOARD_BOOTMODE_CONFIG_FILE "'");
-        pr_debug("rm -f " BOARD_BOOTMODE_CONFIG_FILE "\n");
+        system(SH_RM " '" BOARD_BOOTMODE_CONFIG_FILE "'");
+        pr_debug(SH_RM BOARD_BOOTMODE_CONFIG_FILE "\n");
 
     } else {
 
         // pass the reason to the kernel when we reboot
         reboot_with_reason = 1;
 
-        system("mkdir -p /cache/recovery");
+        system(SH_MKDIR " /cache/recovery");
 
         config = fopen(BOARD_BOOTMODE_CONFIG_FILE,"w");
         if (config == NULL) {
@@ -87,7 +94,7 @@ int reboot_wrapper(const char* reason) {
             pr_debug("%s->bootmenu recovery " BOARD_BOOTMODE_CONFIG_FILE " (%d)\n", reason, ret);
             need_clear_reason = 1;
 #else
-            system("rm -f '" BOARD_BOOTMODE_CONFIG_FILE "'");
+            system(SH_RM " '" BOARD_BOOTMODE_CONFIG_FILE "'");
             pr_debug("allowing stock recovery reboot\n");
 #endif
         } else {
@@ -119,7 +126,7 @@ int reboot_wrapper(const char* reason) {
 }
 
 //toolbox applet entry
-#if 0
+#if SINGLE_APPLET
 int reboot_main(int argc, char *argv[])
 {
     int ret = 0;
