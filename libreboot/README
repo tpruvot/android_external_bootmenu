@@ -1,4 +1,4 @@
 reboot applet replacement to be able to reboot to bootmenu and recovery
 
-Require a patch in system/core/toolbox Android.mk (or a simple copy to this folder)
+gingerbread branch also use reboot.c file as alternative in (system/core/libreboot)
 
