@@ -19,7 +19,7 @@
 #endif
 
 #ifndef SINGLE_APPLET
-#define SINGLE_APPLET 1
+#define SINGLE_APPLET 0
 #endif
 
 #if (DBG_LEVEL)
