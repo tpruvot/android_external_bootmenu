@@ -55,7 +55,7 @@ struct overclock_config overclock[] = {
   { "smt_up_min_freq", 1000000 },
   { "smt_wakeup_freq", 1000000 },
   { "smt_ramp_up_step", 200000 },
-  { "bst_awake_ideal_freq", 600000 },
+  { "bst_awake_ideal_freq", 800000 },
   { "bst_debug_mask", 0 },
   { "bst_down_rate_us", 97000 },
   { "bst_max_cpu_load", 70 },
@@ -63,7 +63,7 @@ struct overclock_config overclock[] = {
   { "bst_ramp_down_step", 160000 },
   { "bst_ramp_up_step", 160000 },
   { "bst_sample_rate_jiffies", 2 },
-  { "bst_sleep_ideal_freq", 200000 },
+  { "bst_sleep_ideal_freq", 300000 },
   { "bst_sleep_wakeup_freq", 300000 },
   { "bst_up_rate_us", 52000 },
   { "iosched_sio", 0 },
@@ -495,7 +495,7 @@ show_menu_overclock(void) {
     sprintf(items[28], "  +bst_max_cpu_load: [%d]", get_overclock_value("bst_max_cpu_load"));
     sprintf(items[29], "  +bst_min_cpu_load: [%d]", get_overclock_value("bst_min_cpu_load"));
     sprintf(items[30], "  +bst_ramp_down_step: [%d]", get_overclock_value("bst_ramp_down_step"));
-    sprintf(items[31], "  +smt_ramp_up_step: [%d]", get_overclock_value("smt_ramp_up_step"));
+    sprintf(items[31], "  +bst_ramp_up_step: [%d]", get_overclock_value("bst_ramp_up_step"));
     sprintf(items[32], "  +bst_sample_rate_jiffies: [%d]", get_overclock_value("bst_sample_rate_jiffies"));
     sprintf(items[33], "  +bst_sleep_ideal_freq: [%d]", get_overclock_value("bst_sleep_ideal_freq"));
     sprintf(items[34], "  +bst_sleep_wakeup_freq: [%d]", get_overclock_value("bst_sleep_wakeup_freq"));
@@ -565,22 +565,16 @@ show_menu_overclock(void) {
 
       case OVERCLOCK_smt_min_cpu_load:
         set_overclock_value("smt_min_cpu_load", menu_set_value("smt_min_cpu_load", get_overclock_value("smt_min_cpu_load"), 1, 100, 1)); break;
-
       case OVERCLOCK_smt_max_cpu_load:
         set_overclock_value("smt_max_cpu_load", menu_set_value("smt_max_cpu_load", get_overclock_value("smt_max_cpu_load"), 1, 100, 1)); break;
-
       case OVERCLOCK_smt_awake_min_freq:
         set_overclock_value("smt_awake_min_freq", menu_set_value("smt_awake_min_freq", get_overclock_value("smt_awake_min_freq"), 200000, 2000000, 10000)); break;
-
       case OVERCLOCK_smt_sleep_max_freq:
         set_overclock_value("smt_sleep_max_freq", menu_set_value("smt_sleep_max_freq", get_overclock_value("smt_sleep_max_freq"), 200000, 2000000, 10000)); break;
-
       case OVERCLOCK_smt_up_min_freq:
         set_overclock_value("smt_up_min_freq", menu_set_value("smt_up_min_freq", get_overclock_value("smt_up_min_freq"), 200000, 1500000, 10000)); break;
-
       case OVERCLOCK_smt_wakeup_freq:
         set_overclock_value("smt_wakeup_freq", menu_set_value("smt_wakeup_freq", get_overclock_value("smt_wakeup_freq"), 200000, 1500000, 10000)); break;
-
       case OVERCLOCK_smt_ramp_up_step:
         set_overclock_value("smt_ramp_up_step", menu_set_value("smt_ramp_up_step", get_overclock_value("smt_ramp_up_step"), 100000, 500000, 10000)); break;
 
